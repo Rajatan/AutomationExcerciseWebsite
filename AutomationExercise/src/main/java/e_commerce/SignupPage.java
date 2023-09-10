@@ -97,8 +97,6 @@ public class SignupPage extends Resources {
 	}
 
 	public void setNewsletter() {
-//		WebDriverWait waitOn = new WebDriverWait(driver, Duration.ofSeconds(20));
-//		waitOn.
 		newsletterCheckbox.click();
 	}
 
@@ -120,32 +118,35 @@ public class SignupPage extends Resources {
 	private WebElement country;
 	@FindBy(xpath = "//input[@name='state']")
 	private WebElement state;
-	
+
 	public void setFirstname(String fname) {
 		firstname.sendKeys(fname);
 	}
-	
+
 	public void setLastname(String lname) {
 		lastname.sendKeys(lname);
 	}
+
 	public void setCompanyname(String companyName) {
 		company.sendKeys(companyName);
 	}
+
 	public void setAddress_1(String address1) {
 		address_1.sendKeys(address1);
 	}
+
 	public void setAddress_2(String address2) {
 		address_2.sendKeys(address2);
 	}
-	public void setCountry(String countryName) { //value: India
+
+	public void setCountry(String countryName) { // value: India
 		country.sendKeys(countryName);
 	}
+
 	public void setState(String stateName) { // Karnataka
 		state.sendKeys(stateName);
 	}
-	
-	
-	
+
 	@FindBy(xpath = "//input[@name='city']")
 	private WebElement city;
 	@FindBy(xpath = "//input[@name='zipcode']")
@@ -161,43 +162,52 @@ public class SignupPage extends Resources {
 
 	@FindBy(xpath = "//a[contains(text(), 'Logged in as')]")
 	private WebElement verifyLoggedInUserText;
-	
-	public void setCity(String cityName) { 
+
+	public void setCity(String cityName) {
 		city.sendKeys(cityName);
 	}
-	public void setZipcode(String zip) { 
+
+	public void setZipcode(String zip) {
 		zipcode.sendKeys(zip);
 	}
-	public void setMobileNumber(String mobile) { 
+
+	public void setMobileNumber(String mobile) {
 		mobileNumber.sendKeys(mobile);
 	}
-	
+
 	public void setCreateAccount() {
 		createAccountBtn.click();
 	}
-	
+
 	public void verifyAccountCreated() {
 		accountCreatedText.isDisplayed();
 	}
-	
+
 	public void setContinue() {
 		continueBtn.click();
 	}
 
 	public void verifyLoggedInUser() {
-		 verifyLoggedInUserText.isDisplayed();
+		verifyLoggedInUserText.isDisplayed();
 	}
-	
+
 	@FindBy(xpath = "//a[@href='/delete_account']")
 	private WebElement deleteAccountBtn;
 	@FindBy(xpath = "//b[contains(text(),'Account Deleted!')]")
 	private WebElement accountDeletedText;
+	@FindBy(xpath = "//p[contains(text(), 'Email Address already exist!')]")
+	private WebElement verifyUserExistText;
 
-	
 	public void setDeleteAccount() {
 		deleteAccountBtn.click();
 	}
+
 	public void verifyAccountDeleted() {
 		accountDeletedText.isDisplayed();
+	}
+
+	public String verifyUserExist() {
+		verifyUserExistText.isDisplayed();
+		return verifyUserExistText.getText();
 	}
 }

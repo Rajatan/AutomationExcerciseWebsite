@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class Resources {
+public class Resources extends ExcelDataImport{
 
 	public void selectByValues(WebElement element, String text) {
 		Select select = new Select(element);

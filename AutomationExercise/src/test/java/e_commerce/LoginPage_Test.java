@@ -24,7 +24,7 @@ public class LoginPage_Test extends Ecomm_BaseFile {
 		driver.get("http://automationexercise.com");
 	}
 
-//	Test Case 2
+//	Test Case 2: Changed
 	@Test
 	public void loginPage_Test() {
 
@@ -37,8 +37,8 @@ public class LoginPage_Test extends Ecomm_BaseFile {
 		login.setPassword(passwordStr);
 		login.setLoginBtn();
 		assertEquals(login.verifyLoggedInUsername().trim(), "Logged in as " + usernameStr + "");
-//		login.setDelectAccount();
-//		assertEquals(login.verifyAccountDeleted().trim(),"ACCOUNT DELETED!");
+		login.setDelectAccount();
+		assertEquals(login.verifyAccountDeleted().trim(),"ACCOUNT DELETED!");
 	}
 	
 //	Test case: 3

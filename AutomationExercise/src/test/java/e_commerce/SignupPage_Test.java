@@ -1,5 +1,7 @@
 package e_commerce;
 
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
@@ -8,6 +10,11 @@ import org.testng.annotations.Test;
 import junit.framework.Assert;
 
 public class SignupPage_Test extends Ecomm_BaseFile {
+
+	String emailAddress = "fave1@fave.com", fname = "fave1", lname = "Last Fave1", companyName = "Fave Company",
+			address1 = "Fave Address 1", address2 = "Fave Address 2", countryName = "USA", stateName = "Karna",
+			cityName = "Fave City", zip = "321654", mobile = "1234567890";
+
 	WebDriver driver;
 
 	@BeforeTest
@@ -17,21 +24,19 @@ public class SignupPage_Test extends Ecomm_BaseFile {
 		driver.get("http://automationexercise.com");
 	}
 
+//Test case: 1
 	@Test
 	public void signupPage_Test() throws InterruptedException {
-		String emailAddress = "fave1@fave.com", fname = "fave1", lname = "Last Fave1", companyName = "Fave Company",
-				address1 = "Fave Address 1", address2 = "Fave Address 2", countryName = "USA", stateName = "Karna",
-				cityName = "Fave City", zip = "321654", mobile = "1234567890";
 		String homeTitle = driver.getTitle();
-		Assert.assertEquals(homeTitle, "Automation Exercise");
+		assertEquals(homeTitle, "Automation Exercise");
 		SignupPage signup = new SignupPage(driver);
 
 		signup.setSignupLogin();
-		Assert.assertEquals(signup.getNewUserSignup(), "New User Signup!");
+		assertEquals(signup.getNewUserSignup(), "New User Signup!");
 		signup.setName(fname);
 		signup.setEmailAddress(emailAddress);
 		signup.setSignup();
-		Assert.assertEquals(signup.getEnterAccountInformation(), "ENTER ACCOUNT INFORMATION");
+		assertEquals(signup.getEnterAccountInformation(), "ENTER ACCOUNT INFORMATION");
 		signup.setTitle();
 		signup.setPassword();
 		signup.setDay();
@@ -61,6 +66,19 @@ public class SignupPage_Test extends Ecomm_BaseFile {
 		signup.verifyAccountDeleted();
 		signup.setContinue();
 
+	}
+
+	@Test
+	public void registerUserWithExistingEmail_Test() {
+		String homeTitle = driver.getTitle();
+		assertEquals(homeTitle, "Automation Exercise");
+		SignupPage signup = new SignupPage(driver);
+		signup.setSignupLogin();
+		assertEquals(signup.getNewUserSignup(), "New User Signup!");
+		signup.setName(fname);
+		signup.setEmailAddress(emailAddress);
+		signup.setSignup();
+		assertEquals(signup.verifyUserExist().trim(), "Email Address already exist!");
 	}
 
 }

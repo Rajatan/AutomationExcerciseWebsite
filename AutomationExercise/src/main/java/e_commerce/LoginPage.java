@@ -36,14 +36,8 @@ public class LoginPage extends Resources {
 	private WebElement accountDeletedText;
 	@FindBy(xpath = "//p[contains(text(), 'Your email or password is incorrect!')]")
 	private WebElement incorrectEmailPasswordText;
-			@FindBy(xpath = "//a[@href='/logout']")
-			private WebElement logoutBtn;
-//			@FindBy(xpath = "xpath")
-//			private WebElement name;
-//			@FindBy(xpath = "xpath")
-//			private WebElement name;
-//			@FindBy(xpath = "xpath")
-//			private WebElement name;
+	@FindBy(xpath = "//a[@href='/logout']")
+	private WebElement logoutBtn;
 
 	public String verifyHomepage() {
 		return driver.getTitle();
@@ -89,13 +83,13 @@ public class LoginPage extends Resources {
 		return incorrectEmailPasswordText.getText();
 
 	}
+
 	public void logout() {
 		logoutBtn.click();
 	}
+
 	public String verifyLoginPage() {
 		return driver.getTitle();
 	}
-	
-	
 
 }
